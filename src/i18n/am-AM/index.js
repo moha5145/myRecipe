@@ -1,0 +1,26 @@
+export default {
+  addTask: 'ተግባር አክል',
+  all: 'ሁሉ',
+  addCategory: 'ምድብ አክል',
+  category: 'ምድብ',
+  confirmDelete: 'እርግጠኛ ነዎት መሰረዝ ይፈልጋሉ',
+  cancel: 'ተው',
+  completed: 'የተጠናቀቀ',
+  delete: 'ሰርዝ',
+  dueDate: 'ቀን',
+  dueTime: 'ሰዓት',
+  descriptions: 'ማብራሪያ',
+  editTask: 'ተግባርን ያርትዑ',
+  edit: 'አስተካከሉ',
+  ingrediant: 'ንጥረ ነገር',
+  NothingToDo: 'ምንም የምተገብረው የለም',
+  nothingCompleted: 'የተጠናቀቀ ተግባር የለም',
+  ongoing: 'በመካሄድ ላይ',
+  required: 'is required',
+  pickImage: 'ምስል ይምረጡ',
+  settings: 'ቅንጅቶች',
+  title:'አርስት',
+  save: 'መዝገብ',
+  search: 'ይፈልጉ'
+
+  }

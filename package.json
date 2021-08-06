@@ -1,0 +1,44 @@
+{
+  "name": "my-recipe",
+  "version": "0.0.1",
+  "description": "A Quasar Framework app",
+  "productName": "Quasar App",
+  "author": "mms.jimma@gmail.com",
+  "private": true,
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.10.7",
+    "@tauri-apps/api": "^1.0.0-beta.4",
+    "core-js": "^3.6.5",
+    "filepond": "^4.26.0",
+    "localbase": "^0.7.5",
+    "quasar": "^2.0.0-rc.3",
+    "slugify": "^1.5.0",
+    "vue-filepond": "^7.0.0",
+    "vue-i18n": "^9.1.6",
+    "vue-image-upload-resize": "^2.3.0"
+  },
+  "devDependencies": {
+    "@quasar/app": "^3.0.0-rc.3",
+    "@tauri-apps/cli": "^1.0.0-beta.5"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "engines": {
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

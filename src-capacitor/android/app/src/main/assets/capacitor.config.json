@@ -1,0 +1,10 @@
+{
+  "appId": "com.myRicipe.mo.app",
+  "appName": "Quasar App",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "server": {
+    "url": "http://192.168.1.106:8080"
+  }
+}
