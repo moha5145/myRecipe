@@ -116,8 +116,8 @@ module.exports = configure(function (/* ctx */) {
       },
 
       manifest: {
-        name: `Quasar App`,
-        short_name: `Quasar App`,
+        name: `myRecipe`,
+        short_name: `myRecipe`,
         description: `A Quasar Framework app`,
         display: 'standalone',
         orientation: 'portrait',

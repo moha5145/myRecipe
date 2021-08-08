@@ -21,10 +21,15 @@ export default defineComponent({
     const $q = useQuasar()
     $q.addressbarColor.set('#a2e3fa')
 
+    // local loungage
+    // $q.lang.getLocale()
+
     // set status
     // $q.dark.set(true) // or false or "auto"
     return { store }
   },
+  
+
   created() {
     const locale = localStorage.getItem('locale')
     if(locale) {

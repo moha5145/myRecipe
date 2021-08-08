@@ -3,6 +3,7 @@ const { reactive } = require("@vue/reactivity");
 import Localbase from 'localbase'
 import { uid } from 'quasar'
 import slugify from 'slugify'
+import { i18n } from 'boot/i18n.js'
 
 let db = new Localbase('myRecip')
 
@@ -14,12 +15,13 @@ const state = reactive({
     themeColor: "#00A3A3",
     search: '',
     isDuplicateName: null,
-    chala: [],
+
     
     categorys: [
         {
             id: "ed125f56-c410-473b-8b1f-d6c6c7f6cec9",
             parent_id: null,
+            name: '',
             label: 'ALL',
             file: 'https://sweetpeasandsaffron.com/wp-content/uploads/2018/07/7-easy-rice-recipes-HERO-500x500.jpg',
             slug: '',
@@ -84,8 +86,11 @@ const methods = {
         state.themeColor = payload  
     },
     addIngrediant() {
+        const chala = i18n.t('all')
+        console.log(chala)
         state.recip.ingredients.push(state.recip.another)
         state.recip.another = ''
+        
     },
     
     deleteIngredent(ingredient) {

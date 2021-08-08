@@ -1,6 +1,6 @@
 {
   "appId": "com.myRicipe.mo.app",
-  "appName": "Quasar App",
+  "appName": "myRecipe",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

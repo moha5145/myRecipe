@@ -2,11 +2,11 @@
   "name": "my-recipe",
   "version": "0.0.1",
   "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "productName": "myRecipe",
   "author": "mms.jimma@gmail.com",
   "private": true,
   "scripts": {
-    "test": "echo \"No test specified\" && exit 0",
+    "icons": "icongenie generate -i appIcon.png --skip-trim --theme-color 00A3A3",
     "tauri": "tauri"
   },
   "dependencies": {

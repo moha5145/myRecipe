@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Quasar App</string>
-    <string name="title_activity_main">Quasar App</string>
+    <string name="app_name">myRecipe</string>
+    <string name="title_activity_main">myRecipe</string>
     <string name="package_name">com.myRicipe.mo.app</string>
     <string name="custom_url_scheme">com.myRicipe.mo.app</string>
 </resources>
