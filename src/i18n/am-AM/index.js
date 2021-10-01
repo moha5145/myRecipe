@@ -1,6 +1,6 @@
 export default {
   addTask: 'ተግባር አክል',
-  all: 'ሁሉ',
+  All: 'ሁሉ',
   addCategory: 'ምድብ አክል',
   category: 'ምድብ',
   confirmDelete: 'እርግጠኛ ነዎት መሰረዝ ይፈልጋሉ',

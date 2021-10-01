@@ -160,11 +160,11 @@ module.exports = configure(function (/* ctx */) {
 
     // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
     capacitor: {
-      hideSplashscreen: true
+      hideSplashscreen: false
     },
 
     bin: {
-      linuxAndroidStudio: "/home/moha/android-studio-ide/android-studio/bin/studio.sh"
+      linuxAndroidStudio: "/snap/android-studio/114/android-studio/bin/studio.sh"
     },
     // Full list of options: https://quasar.dev/quasar-cli/developing-electron-apps/configuring-electron
     electron: {

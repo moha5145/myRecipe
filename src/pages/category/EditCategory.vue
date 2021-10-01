@@ -34,7 +34,6 @@ export default {
                 // store.state.category.file = URL.createObjectURL(file)
             }
         }
-
         
         return {
             // category,

@@ -4,7 +4,7 @@
           class="q-mt-sm q-pb-none"
           flat
           shrink
-          stretch     
+          stretch  
         >
       
     <q-route-tab v-for="category in store.state.categorys" 

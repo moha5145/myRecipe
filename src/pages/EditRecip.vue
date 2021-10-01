@@ -1,7 +1,7 @@
 <template>
     <div >
        
-        <q-btn  @click.prevent="openDialog = true"
+        <q-btn  @click.stop="openDialog = true"
                 round
                 color="orange"
                 size="sm"
@@ -17,10 +17,14 @@
                         :style="{'color': store.state.themeColor}" />
                 </q-card-actions>
 
+                <h5 class="text-center text-grey q-my-sm">Edit Recipe</h5>
+
                 <FormRecipe
                     :recip="recipClon" 
                     :submitForm="store.methods.editRecip" 
                     :pickFile="pickFile" 
+                    :addImage="addImage"
+                    :deleteImage="deleteImage"
                     :deleteIngredent="deleteIngredent"
                     :addIngrediant="addIngrediant"
                     class="q-mt-xs q-pt-xs"
@@ -53,15 +57,35 @@ export default {
             recipClon.value.ingredients = recipClon.value.ingredients.filter(ing => ing != ingredient)
         }
 
-        function pickFile () {
-            let file = ref(recipClon.value.file)
-            if (file.value ) {
-                let reader = new FileReader
-                reader.onload = e => {
-                    recipClon.value.file = e.target.result
-                }
-                reader.readAsDataURL(file.value)
+        // function pickFile () {
+        //     console.log('edit', recipClon.value.files)
+        //     let file = ref(recipClon.value.file)
+        //     if (file.value ) {
+        //         let reader = new FileReader
+        //         reader.onload = e => {
+        //             recipClon.value.file = e.target.result
+        //         }
+        //         reader.readAsDataURL(file.value)
+        //     }
+        // }
+
+        function pickFile (e) {
+            let file = ref(e.target.files[0])
+            let reader = new FileReader
+            reader.onload = e => {
+                recipClon.value.image = e.target.result
             }
+            reader.readAsDataURL(file.value)
+        }
+
+        function deleteImage(payload) {
+            return recipClon.value.files = recipClon.value.files.filter(file => file != payload)
+        }
+
+        function addImage() {
+            recipClon.value.files.push(recipClon.value.image);
+            // store.state.recip.imageUrl = null;
+            recipClon.value.image = null;
         }
 
         function addIngrediant() {
@@ -79,6 +103,8 @@ export default {
             openDialog,
             recipClon,
             pickFile,
+            addImage,
+            deleteImage,
             addIngrediant,
             deleteIngredent,
             reDirect

@@ -4,7 +4,7 @@
 export default {
   addTask: 'Ajouter une tâche',
   addCategory: 'Ajouter une category',
-  all: 'Tout',
+  All: 'Tout',
   category: 'Categorie',
   confirmDelete: 'Êtes-vous sûr de vouloir supprimer',
   cancel: 'Annuler',

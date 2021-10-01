@@ -9,7 +9,7 @@
             class="my-card q-my-none q-py-none col cursor-pointer " 
             style="max-width: 420px; min-width: 340px; border-radius: 20px;" 
             :style="{'border-color': store.state.themeColor}">
-        <q-img v-if="recip.file" :src="recip.file" height="120px"
+        <q-img v-if="recip.files" :src="recip.files[0]" height="120px"
               style="max-width: 420px"/>
         <q-img v-else src="../../public/images/placeholder.png" height="120px" style="max-width: 420px"/>
        

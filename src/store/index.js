@@ -6,22 +6,43 @@ import slugify from 'slugify'
 import { i18n } from 'boot/i18n.js'
 
 let db = new Localbase('myRecip')
+// let chala = i18n.t('All')
 
 const state = reactive({
     recips: [],
-    category: {id: uid(), parent_id: null, label: '', file: null, slug: '', fab: false},
-    recip: { id: uid(), parent_id: '', title: '', ingredients: [], model: '', descriptions: '', file: null, slug: null, created_at: new Date(), another: '',},
+    category: {
+        id: uid(), 
+        parent_id: null, 
+        label: '', 
+        file: null, 
+        slug: '', 
+        fab: false
+    },
+    recip: { 
+        id: uid(), 
+        parent_id: '', 
+        title: '', 
+        ingredients: [], 
+        model: '', 
+        descriptions: '', 
+        image: null,
+        imageUrl: null, 
+        files: [], 
+        slug: null, 
+        created_at: new Date(), 
+        another: '',
+    },
     feedback: null,
     themeColor: "#00A3A3",
     search: '',
     isDuplicateName: null,
+    carouselDialog: false,
 
     
     categorys: [
         {
             id: "ed125f56-c410-473b-8b1f-d6c6c7f6cec9",
             parent_id: null,
-            name: '',
             label: 'ALL',
             file: 'https://sweetpeasandsaffron.com/wp-content/uploads/2018/07/7-easy-rice-recipes-HERO-500x500.jpg',
             slug: '',
@@ -86,8 +107,6 @@ const methods = {
         state.themeColor = payload  
     },
     addIngrediant() {
-        const chala = i18n.t('all')
-        console.log(chala)
         state.recip.ingredients.push(state.recip.another)
         state.recip.another = ''
         
@@ -173,7 +192,9 @@ const methods = {
             ingredients: payload.ingredients,
             descriptions: payload.descriptions,
             feedback: payload.feedback,
-            file: payload.file,
+            files: payload.files,
+            image: payload.image,
+            imageUrl: payload.imageUrl,
             slug: payload.slug,
             created_at: new Date(), 
         }
@@ -190,7 +211,10 @@ const methods = {
         state.recip.ingredients = [],
         state.recip.model = '',
         state.recip.descriptions = '',
+        state.recip.files = [],
         state.recip.file = null,
+        state.image = null,
+        state.imageUrl = null,
         state.recip.slug = null
     },
 
@@ -203,7 +227,7 @@ const methods = {
                 recip.model = payload.model
                 recip.descriptions = payload.descriptions
                 recip.feedback = payload.feedback
-                recip.file = payload.file
+                recip.files = payload.files
                 recip.slug = payload.slug
 
             } 
@@ -216,7 +240,7 @@ const methods = {
                 model: myRecip.model,
                 descriptions: myRecip.descriptions,
                 feedback: myRecip.feedback,
-                file: myRecip.file,
+                files: myRecip.files,
                 slug: myRecip.slug
             })
         })

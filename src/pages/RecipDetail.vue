@@ -2,23 +2,30 @@
   <div class="col column justify-center items-center q-mt-lg">
     <q-card flat 
             v-if="recip"
+            v-ripple
+            @click="store.state.carouselDialog = true"
             bordered
             height="800px"
             class="my-card q-my-sm q-mx-none q-px-none" 
-            style="min-width: 380px; max-width: 720px; border-radius: 20px;" 
-            :style="{'border-color': store.state.themeColor}">
-        <q-img v-if="recip.file" :src="recip.file" height="160px"
-                style="max-width: 420px">
-          <q-btn 
-            @click="reDirect()"
-            fab
-            size="sm"
-            class="q-ma-md absolute all-pointer-events" 
-            icon="arrow_back"
-            :style="{'background-color': store.state.themeColor, 'color': 'white'}">
-          </q-btn>
-        </q-img>
+            style="min-width: 360px; max-width: 520px; border-radius: 20px; cursor: pointer" 
+            :style="{'border-color': store.state.themeColor}
+             ">
+          
+            <q-img v-if="recip.files" :src="recip.files[0]" height="260px"
+              style="width: 100%" >
+              <q-btn 
+                @click="reDirect()"
+                fab
+                size="sm"
+                class="q-ma-md absolute all-pointer-events" 
+                icon="arrow_back"
+                :style="{'background-color': store.state.themeColor, 'color': 'white'}">
+              </q-btn>
 
+              <carousel :recip="recip"></carousel>
+            </q-img>
+            
+        
         <q-img v-else src="../../public/images/placeholder.png" height="160px" 
               style="max-width: 420px">
           <q-btn 
@@ -35,15 +42,6 @@
           <EditRecip :recip="recip"></EditRecip>
 
           <DeleteRecip :recip="recip"></DeleteRecip>
-
-          <!-- <q-btn @click="store.methods.deleteRecip(recip)" to="/"
-            round
-            color="red"
-            size="sm"
-            icon="delete"
-            class="absolute"
-            style="top: 0; right: 4px; transform: translateY(-50%);"
-          /> -->
 
           <div class="row no-wrap items-center">
             <div class="col text-h6 ellipsis">
@@ -75,9 +73,10 @@ import {  computed, inject, ref} from 'vue'
 import EditRecip from './EditRecip.vue'
 import { useRouter } from 'vue-router'
 import DeleteRecip from './DeleteRecip.vue'
+import Carousel from './Carousel.vue'
 
 export default {
-  components: { EditRecip, DeleteRecip },
+  components: { EditRecip, DeleteRecip, Carousel },
   
   props: ['recip_slug'],
     setup(props) {

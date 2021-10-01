@@ -5,7 +5,7 @@
                 
             <q-form @submit.prevent="submitForm(recip, $route.path == '/' ? recip.model :category)" 
                 :style="{'background-color': store.state.themeColor}"
-                class="my-form q-mt-none white-text q-mb-xl q-mx-none q-px-none" >
+                class="my-form q-mt-none white-text q-mb-xl q-mx-none q-px-sm" >
 
                 <q-select v-if="$route.path == '/'"
                     :options="store.getters.nested(store.getters.categorysAndRecips())"
@@ -14,14 +14,14 @@
                     :label="$t('category')"
                     dark
                     :style="{'color': store.state.themeColor}"
-                    class="q-mx-md"
+                    class="q-mx-sm"
                     :rules="[store.methods.required('Category')]"
                 />
                
                 <q-input v-model="recip.title" 
-                    rounded filled dark 
+                    rounded dark 
                     :label="$t('title')" 
-                    class="text-white"
+                    class="text-white q-mx-sm"
                     :style="{'color': store.state.themeColor}"
                     :rules="[
                             store.methods.required('title'),
@@ -34,48 +34,72 @@
                     </template>
                 </q-input>
                 
+                <div v-for="file in recip.files" :key="file" class="row inline">
+                    <q-img v-if="file" :src="file" height="75px" width="120px"  
+                            style="max-width: 130px" class="q-mx-xs">
+                        <q-icon @click="deleteImage(file)" class="absolute all-pointer-events cursor-pointer" 
+                            size="32px" name="cancel" color="red" 
+                            style="top: 2px; right: 2px"/> 
+                    </q-img>
+                </div>
+
+                <div >
+                    <q-card class="my-card">
+                        <q-img v-if="recip.image" :src="recip.image"
+                            height="250px" width="480px"  
+                            style="max-width: 520px">
+                        </q-img>
+
+                        <div class="q-pa-xs text-center" v-if="recip.image" >
+                            <q-btn-group spread>
+                                <q-btn icon="add" @click.prevent="addImage()" color="green" class="cursor-pointer" />
+                                
+                                <q-btn icon="cancel" @click.prevent="recip.image = null, recip.image = null" 
+                                    color="red" class="cursor-pointer" />
+                            </q-btn-group>
+                        </div>
+                    </q-card>
+
+                </div>
 
                 <q-file
-                    v-model="recip.file"
+                    v-model="recip.image"
+                    class="q-mx-sm"
                     ref="fileInput"
                     :label="$t('pickImage')"
-                    filled
                     dark
                     max-files="3"
                     append
-                    use-chips
                     @change="pickFile"
                     >
                     <template v-slot:prepend>
                         <q-icon name="add_photo_alternate" />
                     </template>
-                </q-file>
-    
 
-                <q-img v-if="recip.file" :src="recip.file"></q-img>
+                </q-file>                
 
                 <div v-for="(ingredient, index) in recip.ingredients" :key="index" dark>
                 
-                    <q-input filled dark v-model="recip.ingredients[index]" :label="$t('ingrediant')">
+                    <q-input class="q-mx-md" dark v-model="recip.ingredients[index]" :label="$t('ingrediant')">
                         
-                
                         <template v-slot:append>
-                            <q-btn round dense flat icon="delete" @click="deleteIngredent(ingredient)"/>
+                            <q-btn round dense flat icon="delete" color="red" @click="deleteIngredent(ingredient)"/>
                         </template>
                     </q-input>
                 </div>
 
-                <q-input filled dark v-model="recip.another" :label="$t('ingrediant')">
+                <q-input class="q-mx-sm" dark v-model="recip.another" :label="$t('ingrediant')">
                     <template v-slot:prepend>
                         <q-icon name="dinner_dining" />
                     </template>
 
                     <template v-slot:append>
-                        <q-btn round dense flat icon="add" @click="addIngrediant"/>
+                        <q-btn v-if="recip.another && recip.another.length > 1" round dense 
+                            color="green" icon="add" @click="addIngrediant"/>
                     </template>
                 </q-input>
             
-                <q-input filled dark type="textarea" v-model="recip.descriptions" :label="$t('descriptions')">
+                <q-input class="q-mx-sm" dark type="textarea" v-model="recip.descriptions" :label="$t('descriptions')">
                     <template v-slot:prepend>
                         <q-icon name="description" />
                     </template>
@@ -128,7 +152,8 @@ export default {
     },
     props: ["recip", "submitForm", "pickFile", 
             "deleteIngredent", "addIngrediant", 
-            'reDirect', 'categorySlug', 'category', 'category_slug', 'closeDialog'],
+            'reDirect', 'categorySlug', 'category', 'category_slug', 'closeDialog',
+            'addImage', 'deleteImage'],
     setup(props) {
         const store = inject('store')
 
