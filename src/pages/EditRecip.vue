@@ -29,7 +29,8 @@
                     :addIngrediant="addIngrediant"
                     class="q-mt-xs q-pt-xs"
                     :style="{'border-color': store.state.themeColor}"
-                    :reDirect="reDirect">
+                    :reDirect="reDirect"
+                    @closeDialog="openDialog = false">
                 </FormRecipe>
 
             </q-card>
