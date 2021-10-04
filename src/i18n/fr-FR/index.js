@@ -4,7 +4,7 @@
 export default {
   addTask: 'Ajouter une tâche',
   addCategory: 'Ajouter une category',
-  All: 'Tout',
+  all: 'Tout',
   category: 'Categorie',
   confirmDelete: 'Êtes-vous sûr de vouloir supprimer',
   cancel: 'Annuler',
@@ -13,16 +13,23 @@ export default {
   dueDate: 'Date',
   dueTime: 'Heure',
   descriptions: 'Descriptif', 
+  desserts: 'desserts',
   editTask: 'Modifier la tâche',
   edit: 'Modifier',
+  entres: 'entres',
   ingrediant: 'Ingrédient',
   NothingToDo: 'Rien à faire',
   nothingCompleted: 'Rien de terminé',
   ongoing: 'En cours',
   required: 'is required',
   pickImage: 'Choisir une image',
+  plats: 'plats',
   settings: 'paramètres',
   title:'Titre',
   save: 'Enregistrer',
   search: 'Chercher'
   }
+
+  
+        
+        

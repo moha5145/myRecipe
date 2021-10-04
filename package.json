@@ -19,7 +19,7 @@
     "quasar": "^2.0.0-rc.3",
     "slugify": "^1.5.0",
     "vue-filepond": "^7.0.0",
-    "vue-i18n": "^9.1.6",
+    "vue-i18n": "^9.2.0-beta.9",
     "vue-image-upload-resize": "^2.3.0"
   },
   "devDependencies": {

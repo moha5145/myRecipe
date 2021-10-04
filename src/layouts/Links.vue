@@ -14,10 +14,10 @@
           
         <AddRecip :category_slug="category.slug" :category="category"></AddRecip>  
 
-      <q-fab v-if="category.label != 'ALL' && 
-            category.label != 'ENTRES' && 
-            category.label != 'PLATS' &&
-            category.label != 'DESERTS'" 
+      <q-fab v-if="category.label != $t('all') && 
+            category.label != $t('entres') && 
+            category.label != $t('plats') &&
+            category.label != $t('desserts')" 
             @click.prevent
             v-model="category.fab"
             icon="keyboard_arrow_right"

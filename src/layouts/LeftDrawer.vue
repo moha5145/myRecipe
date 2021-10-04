@@ -71,7 +71,8 @@ export default {
   methods: {
     setLocal(locale) {
       this.$i18n.locale = locale
-      localStorage.setItem('locale', locale)
+      localStorage.setItem('locale', locale),
+      this.store.methods.changeCategorysLoungages()
     }
   }
 }

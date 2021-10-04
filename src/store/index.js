@@ -1,10 +1,13 @@
-const { reactive } = require("@vue/reactivity");
+const { reactive, ref } = require("@vue/reactivity");
 
 import Localbase from 'localbase'
 import { uid } from 'quasar'
 import slugify from 'slugify'
-import { i18n } from 'boot/i18n.js'
+import { i18n } from 'src/boot/i18n.js'
 
+
+let { t } = i18n.global;
+// i18n.global.locale = 'en-US'
 let db = new Localbase('myRecip')
 // let chala = i18n.t('All')
 
@@ -38,12 +41,12 @@ const state = reactive({
     isDuplicateName: null,
     carouselDialog: false,
 
-    
+   
     categorys: [
         {
             id: "ed125f56-c410-473b-8b1f-d6c6c7f6cec9",
             parent_id: null,
-            label: 'ALL',
+            label: 'all',
             file: 'https://sweetpeasandsaffron.com/wp-content/uploads/2018/07/7-easy-rice-recipes-HERO-500x500.jpg',
             slug: '',
             fab: false
@@ -51,7 +54,7 @@ const state = reactive({
         {
             id: "f2ed298b-30c6-4741-9d08-82a81636ad08",
             parent_id: null,
-            label: 'ENTRES',
+            label: 'entres',
             file: 'https://resize.prod.femina.ladmedia.fr/rblr/652,438/img/var/2020-04/plats-les-plus-comande-s.jpg',
             slug: 'entres',
             fab: false
@@ -59,7 +62,7 @@ const state = reactive({
         {
             id: "01607cf0-e39e-426c-88d4-dd1e86b22256",
             parent_id: null,
-            label: 'PLATS',
+            label: 'plats',
             file: 'https://www.mutuellebleue.fr/conseils-sante-bien-etre/wp-content/uploads/sites/2/2020/07/des-plats-%C3%A9quiliobr%C3%A9s-et-color%C3%A9s.jpg',
             slug: 'plats',
             fab: false
@@ -68,9 +71,9 @@ const state = reactive({
         {
             id: "7bede0c7-5518-4c1e-90ef-7a02d3c09cdd",
             parent_id: null,
-            label: 'DESERTS', 
+            label: 'desserts', 
             file: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtFpzV-M2vIQwJjk2RL2x_tknnyCsoUQSM0g&usqp=CAU',
-            slug: 'deserts',
+            slug: 'desserts',
             fab: false
         },
     
@@ -87,6 +90,7 @@ const state = reactive({
 const methods = {
     getCollections (){
         db.collection('categorys').get().then(categorys => {
+            this.changeCategorysLoungages()
             state.categorys = state.categorys.concat(categorys)
         })
         .then(
@@ -114,6 +118,12 @@ const methods = {
     
     deleteIngredent(ingredient) {
         state.ingredients = state.ingredients.filter(ing => ing != ingredient)
+    },
+    changeCategorysLoungages() {
+        state.categorys[0].label = t('all')
+        state.categorys[1].label = t('entres')
+        state.categorys[2].label = t('plats')
+        state.categorys[3].label = t('desserts')
     },
 
     addCategory(payload) {
@@ -182,7 +192,6 @@ const methods = {
             remove: /[$*_+~.()'"!\-:@]/g,
             lower: true
         })
-       
         const recip = {
             id: uid(),
             parent_id: category.id,

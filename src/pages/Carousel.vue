@@ -14,25 +14,15 @@
               style="top: 0; right: 0px; transform: translateY(-5%);"/>
           </div>
               
-          <q-carousel 
-            animated
-            v-model="slide"
-            arrows
-            
-            thumbnails
-            infinite
-            
-            
-            
-            >
-              
-
+            <q-carousel 
+              animated
+              v-model="slide"
+              arrows
+              infinite
+              height="90vh"
+              >
                 <q-carousel-slide v-for="(image, index) in recip.files" :key="index"
-                   :name="index + 1" :img-src="image"  />
-                <!-- <q-carousel-slide :name="2" :img-src="recip.files[1]" />
-                <q-carousel-slide :name="3" :img-src="recip.files[2]" /> -->
-              
-            
+                    :name="index + 1" :img-src="image"  />                       
             </q-carousel>
       </div>
     </q-dialog>
