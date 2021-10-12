@@ -44,21 +44,27 @@
                 </div>
 
                 <div >
-                    <q-card class="my-card">
-                        <q-img v-if="recip.image" :src="recip.image"
-                            height="250px" width="480px"  
-                            style="max-width: 520px">
-                        </q-img>
 
-                        <div class="q-pa-xs text-center" v-if="recip.image" >
-                            <q-btn-group spread>
-                                <q-btn icon="add" @click.prevent="addImage()" color="green" class="cursor-pointer" />
-                                
-                                <q-btn icon="cancel" @click.prevent="recip.image = null, recip.image = null" 
-                                    color="red" class="cursor-pointer" />
-                            </q-btn-group>
-                        </div>
-                    </q-card>
+                    <q-dialog v-model="imageDialog" class="q-mx-lg " >
+      
+                        <q-card class="my-card">
+                            <q-img v-if="recip.image" :src="recip.image"
+                                height="250px" width="480px"  
+                                style="max-width: 520px">
+                            </q-img>
+
+                            <div class="q-pa-xs text-center" v-if="recip.image" >
+                                <q-btn-group spread rounded>
+                                    <q-btn icon="cancel" @click.prevent="recip.image = null, recip.image = null, imageDialog = false"  
+                                        color="red" class="cursor-pointer" />
+
+                                    <q-btn icon="add" @click.prevent="addImage(), imageDialog = false"  
+                                        color="green" class="cursor-pointer" />
+                                </q-btn-group>
+                            </div>
+                        </q-card>
+                            
+                    </q-dialog>
 
                 </div>
 
@@ -71,6 +77,7 @@
                     max-files="3"
                     append
                     @change="pickFile"
+                    @update:modelValue="imageDialog = true, pickFile"
                     >
                     <template v-slot:prepend>
                         <q-icon name="add_photo_alternate" />
@@ -80,10 +87,10 @@
 
                 <div v-for="(ingredient, index) in recip.ingredients" :key="index" dark>
                 
-                    <q-input class="q-mx-md" dark v-model="recip.ingredients[index]" :label="$t('ingrediant')">
+                    <q-input class="q-mx-md" readonly  dark v-model="recip.ingredients[index]" :label="$t('ingrediant')">
                         
                         <template v-slot:append>
-                            <q-btn round dense flat icon="delete" color="red" @click="deleteIngredent(ingredient)"/>
+                            <q-btn round dense size="xs" icon="delete" color="red" @click="deleteIngredent(ingredient)"/>
                         </template>
                     </q-input>
                 </div>
@@ -95,7 +102,7 @@
 
                     <template v-slot:append>
                         <q-btn v-if="recip.another && recip.another.length > 1" round dense 
-                            color="green" icon="add" @click="addIngrediant"/>
+                            color="green" icon="add" @click="addIngrediant" @keypress.tab="addIngrediant"/>
                     </template>
                 </q-input>
             
@@ -159,7 +166,8 @@ export default {
 
         return {
             store,
-            model: ref(null)
+            model: ref(null),
+            imageDialog: ref(false)
         }
     }
     

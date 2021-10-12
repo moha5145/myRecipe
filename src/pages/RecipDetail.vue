@@ -2,41 +2,43 @@
   <div class="col column justify-center items-center q-mt-lg">
     <q-card flat 
             v-if="recip"
-            v-ripple
-            @click="store.state.carouselDialog = true"
+            
+            
             bordered
             height="800px"
             class="my-card q-my-sm q-mx-none q-px-none" 
-            style="min-width: 360px; max-width: 520px; border-radius: 20px; cursor: pointer" 
+            style="min-width: 360px; max-width: 520px; border-radius: 20px" 
             :style="{'border-color': store.state.themeColor}
              ">
-          
-            <q-img v-if="recip.files" :src="recip.files[0]" height="260px"
-              style="width: 100%" >
+            <q-card v-if="recip.files" v-ripple style="cursor: pointer">
+              <q-img  :src="recip.files[0]" height="260px"
+                style="width: 100%, cursor: pointer"
+                
+                @click.stop="store.state.carouselDialog = true" >
+                <q-btn 
+                  @click.stop="reDirect()"
+                  fab
+                  size="sm"
+                  class="q-ma-md absolute all-pointer-events" 
+                  icon="arrow_back"
+                  :style="{'background-color': store.state.themeColor, 'color': 'white'}">
+                </q-btn>
+
+                <carousel :recip="recip"></carousel>
+              </q-img>
+            </q-card>
+        
+            <q-img v-else src="../../public/images/placeholder.png" height="160px" 
+                  style="max-width: 420px">
               <q-btn 
-                @click="reDirect()"
+                @click.stop="reDirect()"
                 fab
                 size="sm"
                 class="q-ma-md absolute all-pointer-events" 
                 icon="arrow_back"
                 :style="{'background-color': store.state.themeColor, 'color': 'white'}">
               </q-btn>
-
-              <carousel :recip="recip"></carousel>
             </q-img>
-            
-        
-        <q-img v-else src="../../public/images/placeholder.png" height="160px" 
-              style="max-width: 420px">
-          <q-btn 
-            @click="reDirect()"
-            fab
-            size="sm"
-            class="q-ma-md absolute all-pointer-events" 
-            icon="arrow_back"
-            :style="{'background-color': store.state.themeColor, 'color': 'white'}">
-          </q-btn>
-        </q-img>
 
         <q-card-section>
           <EditRecip :recip="recip"></EditRecip>
@@ -65,6 +67,7 @@
         </q-card-section>
 
     </q-card>
+    
     </div>
 </template>
 

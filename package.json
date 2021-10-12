@@ -8,7 +8,7 @@
   "scripts": {
     "icons": "icongenie generate -i appIcon.png --skip-trim --theme-color 00A3A3",
     "tauri": "tauri",
-    "tauriIcon": "tauri icon --icon ./appIcon-transparant.png"
+    "tauriIcon": "tauri icon -i appIcon-transparant.png"
   },
   "dependencies": {
     "@quasar/extras": "^1.10.7",

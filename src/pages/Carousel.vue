@@ -13,17 +13,19 @@
             <q-btn icon="close " flat round dense v-close-popup color="white"
               style="top: 0; right: 0px; transform: translateY(-5%);"/>
           </div>
-              
-            <q-carousel 
-              animated
-              v-model="slide"
-              arrows
-              infinite
-              height="90vh"
-              >
-                <q-carousel-slide v-for="(image, index) in recip.files" :key="index"
-                    :name="index + 1" :img-src="image"  />                       
-            </q-carousel>
+              <q-responsive :ratio="16/9" style="width: 100%; max-width: 100%;">
+                <q-carousel 
+                  animated
+                  swipeable
+                  v-model="slide"
+                  arrows
+                  infinite
+                  
+                  >
+                    <q-carousel-slide v-for="(image, index) in recip.files" :key="index"
+                        :name="index + 1" :img-src="image"  class="uncropped-imag"/>                       
+                </q-carousel>
+              </q-responsive>
       </div>
     </q-dialog>
 </template>
@@ -48,3 +50,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .uncropped-image {
+    background-size: contain;  /* don't crop the image  */
+    background-repeat: no-repeat;  /* only show the image one time  */
+    background-color: grey;  /* color to fill empty space with  */
+  }
+</style>

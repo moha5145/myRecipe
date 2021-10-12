@@ -1,7 +1,7 @@
 <template>
     <div >
        
-        <q-btn  @click.stop="openDialog = true"
+        <q-btn  @click.prevent="openDialog = true"
                 round
                 color="orange"
                 size="sm"

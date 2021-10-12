@@ -1,5 +1,5 @@
 <template>
-  <q-btn flat 
+  <q-btn flat @click.stop=""
         :to="{name: 'RecipDetail', params: {recip_slug: recip.slug}}"
         class="text-grey q-py-none q-mt-none"
         style="border-radius: 20px"> 
@@ -9,7 +9,7 @@
             class="my-card q-my-none q-py-none col cursor-pointer " 
             style="max-width: 420px; min-width: 340px; border-radius: 20px;" 
             :style="{'border-color': store.state.themeColor}">
-        <q-img v-if="recip.files" :src="recip.files[0]" height="120px"
+        <q-img v-if="recip.files.length > 0" :src="recip.files[0]" height="120px"
               style="max-width: 420px"/>
         <q-img v-else src="../../public/images/placeholder.png" height="120px" style="max-width: 420px"/>
        

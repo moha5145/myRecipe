@@ -56,8 +56,7 @@ export default {
                 store.state.recip.image = e.target.result
             }
 
-            reader.readAsDataURL(file.value)
-            
+            reader.readAsDataURL(file.value)   
         }
 
         function addImage() {
