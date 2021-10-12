@@ -46,7 +46,7 @@ const state = reactive({
         {
             id: "ed125f56-c410-473b-8b1f-d6c6c7f6cec9",
             parent_id: null,
-            label: 'all',
+            label: 'tout',
             file: 'https://sweetpeasandsaffron.com/wp-content/uploads/2018/07/7-easy-rice-recipes-HERO-500x500.jpg',
             slug: '',
             fab: false
@@ -120,7 +120,7 @@ const methods = {
         state.ingredients = state.ingredients.filter(ing => ing != ingredient)
     },
     changeCategorysLoungages() {
-        state.categorys[0].label = t('all')
+        state.categorys[0].label = t('tout')
         state.categorys[1].label = t('entres')
         state.categorys[2].label = t('plats')
         state.categorys[3].label = t('desserts')

@@ -14,7 +14,7 @@
           
         <AddRecip :category_slug="category.slug" :category="category"></AddRecip>  
 
-      <q-fab v-if="category.label != $t('all') && 
+      <q-fab v-if="category.label != $t('tout') && 
             category.label != $t('entres') && 
             category.label != $t('plats') &&
             category.label != $t('desserts')" 
